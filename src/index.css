@@ -1,15 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;1,900&display=swap");
-@import url("https://rsms.me/inter/inter.css");
-
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;1,900&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+@import 'tailwindcss';
 
 html {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 @supports (font-variation-settings: normal) {
   html {
-    font-family: "Inter var", sans-serif;
+    font-family: 'Inter var', sans-serif;
   }
 }
 
@@ -30,11 +29,14 @@ html {
 }
 
 .download-btn {
-  @apply w-14 h-14 flex justify-center items-center rounded-full glassmorphism cursor-pointer outline-none;
+  @apply w-14 h-14 flex justify-center items-center rounded-full 
+  /* glassmorphism */
+   cursor-pointer outline-none;
 }
 
 .editortabs-container {
-  @apply glassmorphism w-16 border-[2px] rounded-lg flex flex-col justify-center items-center ml-1 py-4 gap-4;
+  @apply /* glassmorphism */
+   w-16 border-[2px] rounded-lg flex flex-col justify-center items-center ml-1 py-4 gap-4;
 }
 
 .filtertabs-container {
@@ -42,7 +44,9 @@ html {
 }
 
 .aipicker-container {
-  @apply absolute left-full ml-3 glassmorphism p-3 w-[195px] h-[220px] rounded-md flex flex-col gap-4;
+  @apply absolute left-full ml-3 
+  /* glassmorphism */
+   p-3 w-[195px] h-[220px] rounded-md flex flex-col gap-4;
 }
 
 .aipicker-textarea {
@@ -50,7 +54,9 @@ html {
 }
 
 .filepicker-container {
-  @apply absolute left-full ml-3 glassmorphism p-3 w-[195px] h-[220px] flex flex-col rounded-md;
+  @apply absolute left-full ml-3 
+  /* glassmorphism */
+   p-3 w-[195px] h-[220px] flex flex-col rounded-md;
 }
 
 .filepicker-label {
@@ -62,29 +68,17 @@ html {
 }
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 2px 30px 0 rgba(31, 38, 135, 0.07);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  @apply bg-white/25 shadow-[0_2px_30px_0_rgba(31,38,135,0.07)] backdrop-blur-sm border border-white/18;
 }
 
-input[type="file"] {
-  z-index: -1;
-  position: absolute;
-  opacity: 0;
+input[type='file'] {
+  @apply z-[-1] absolute opacity-0;
 }
 
 .sketch-picker {
-  width: 170px !important;
-  background: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 2px 30px 0 rgba(31, 38, 135, 0.07) !important;
-  backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  border-radius: 6px !important;
+  @apply w-[170px] bg-white/25 shadow-[0_2px_30px_0_rgba(31,38,135,0.07)] backdrop-blur-sm border border-white/18 rounded-md;
 }
 
 .sketch-picker > div:nth-child(3) {
-  display: none !important;
+  @apply hidden;
 }

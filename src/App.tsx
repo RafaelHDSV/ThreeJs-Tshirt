@@ -1,5 +1,13 @@
+import Home from './pages/Home'
+import Canvas from './canvas'
+import Customizer from './pages/Customizer'
+
 export default function App() {
   return (
-    <h1>React App</h1>
+    <main className='app transition-all ease-in'>
+      <Home />
+      <Canvas />
+      <Customizer />
+    </main>
   )
 }

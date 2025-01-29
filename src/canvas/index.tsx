@@ -11,7 +11,7 @@ export default function CanvasModel() {
       <Environment preset='city' />
 
       <CameraRig>
-        {/* <Backdrop /> */}
+        <Backdrop />
         <Center>
           <Shirt />
         </Center>

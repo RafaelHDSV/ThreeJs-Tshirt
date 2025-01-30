@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { AccumulativeShadows, RandomizedLight } from '@react-three/drei'
 
-const Backdrop = () => {
+export default function Backdrop() {
   const shadows = useRef(null)
   // useFrame((state, delta) => easing.dampC(shadows.current?.getMesh().material.color, state.color, 0.25, delta))
 
@@ -12,5 +12,3 @@ const Backdrop = () => {
     </AccumulativeShadows>
   )
 }
-
-export default Backdrop

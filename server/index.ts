@@ -10,10 +10,6 @@ const app = express()
 app.use(cors())
 app.use(express.json({ limit: '50mb' }))
 
-app.get('/', (req: Request, res: Response) => {
-  res.status(200).json({ message: 'Hello World from DALL.E' })
-})
-
-app.use('/api/v1/dalle', router)
+app.use('/generate', router)
 
 app.listen(8080, () => console.log('Server running on port 8080'))

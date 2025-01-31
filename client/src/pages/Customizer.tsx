@@ -32,14 +32,29 @@ export default function Customizer() {
     }
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(type: 'logo' | 'full') {
     if (!prompt) return alert('Please enter a prompt')
     setLoading(true)
 
     try {
-      console.log('no try')
+      const response = await fetch('http://localhost:8080/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt })
+      })
+
+      const data = await response.json()
+      if (!data.photo) {
+        console.error('Image generation failed:', data)
+        throw new Error('Image generation failed')
+      }
+
+      handleDecals(type, `data:image/png;base64,${data.photo}`)
     } catch (err) {
-      console.error(err)
+      console.error('Error:', err)
+      alert('This is a paid feature. Please contact support for more information.')
     } finally {
       setLoading(false)
     }
@@ -91,7 +106,7 @@ export default function Customizer() {
             <div className='flex items-center min-h-screen'>
               <div className='editortabs-container tabs'>
                 {EditorTabs.map((tab, index) => (
-                  <Tab key={index} tab={tab} handleClick={() => setActiveEditorTab(tab.name)} />
+                  <Tab key={index} tab={tab} handleClick={() => (activeEditorTab === tab.name ? setActiveEditorTab('') : setActiveEditorTab(tab.name))} />
                 ))}
 
                 {generateTabContent()}

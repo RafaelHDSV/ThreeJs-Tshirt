@@ -5,7 +5,7 @@ import { getContrastingColor } from '../../config/helpers'
 interface ICustomButtonProps {
   type: 'filled' | 'outline'
   title: string
-  handleClick: () => void
+  handleClick?: () => void
   customStyles: string
 }
 

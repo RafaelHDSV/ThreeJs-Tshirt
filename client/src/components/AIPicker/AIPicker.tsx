@@ -1,14 +1,26 @@
+import CustomButton from '../CustomButton/CustomButton'
+
 interface IAIPickerProps {
   prompt: string
   setPrompt: (prompt: string) => void
   loading: boolean
-  handleSubmit: () => void
+  handleSubmit: (type: 'logo' | 'full') => void
 }
 export default function AIPicker({ prompt, setPrompt, loading, handleSubmit }: IAIPickerProps) {
-  console.log('prompt', prompt)
-  console.log('setPrompt', setPrompt)
-  console.log('loading', loading)
-  console.log('handleSubmit', handleSubmit)
+  return (
+    <div className='aipicker-container'>
+      <textarea className='aipicker-textarea' name='' id='' placeholder='Ask AI...' rows={5} value={prompt} onChange={e => setPrompt(e.target.value)} />
 
-  return <>AIPicker</>
+      <div className='flex flex-wrap gap-3'>
+        {loading ? (
+          <CustomButton type='outline' title='Asking AI...' customStyles='text-xs' />
+        ) : (
+          <>
+            <CustomButton type='outline' title='AI Logo' handleClick={() => handleSubmit('logo')} customStyles='text-xs' />
+            <CustomButton type='filled' title='AI Full' handleClick={() => handleSubmit('full')} customStyles='text-xs' />
+          </>
+        )}
+      </div>
+    </div>
+  )
 }

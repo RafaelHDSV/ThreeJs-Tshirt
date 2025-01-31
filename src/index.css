@@ -56,6 +56,10 @@ html {
   @apply border border-gray-300 py-1.5 px-2 rounded-md shadow-sm text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer w-fit;
 }
 
+.glassmorphism {
+  @apply bg-white/25 shadow-[0_2px_30px_0_rgba(31,38,135,0.07)] backdrop-blur-sm border border-white/18;
+}
+
 .tab-btn {
   @apply w-14 h-14 flex justify-center items-center cursor-pointer select-none;
 }

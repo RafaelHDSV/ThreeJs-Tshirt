@@ -1,6 +1,15 @@
 import { proxy } from 'valtio'
 
-const state = proxy({
+export interface IState {
+  intro: boolean
+  color: string
+  isLogoTexture: boolean
+  isFullTexture: boolean
+  logoDecal: string
+  fullDecal: string
+}
+
+const state: IState = proxy({
   intro: true,
   color: '#EFBD48',
   isLogoTexture: true,

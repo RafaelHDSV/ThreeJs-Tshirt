@@ -14,10 +14,10 @@ import { reader } from '../config/helpers'
 export default function Customizer() {
   const snap = useSnapshot(state)
   const [file, setFile] = useState<File | undefined>()
-  // const [prompt, setPrompt] = useState('')
+  const [prompt, setPrompt] = useState('')
   const [activeEditorTab, setActiveEditorTab] = useState('')
   const [activeFilterTab, setActiveFilterTab] = useState({ logoShirt: true, stylishShirt: false })
-  // const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   function generateTabContent() {
     switch (activeEditorTab) {
@@ -26,16 +26,26 @@ export default function Customizer() {
       case 'filepicker':
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />
       case 'aipicker':
-        return <AIPicker />
+        return <AIPicker prompt={prompt} setPrompt={setPrompt} loading={loading} handleSubmit={handleSubmit} />
       default:
         return null
     }
   }
 
-  function readFile(file: File, type: 'logo' | 'full') {
-    console.log('file', file)
-    console.log('type', type)
+  async function handleSubmit() {
+    if (!prompt) return alert('Please enter a prompt')
+    setLoading(true)
 
+    try {
+      console.log('no try')
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  function readFile(file: File, type: 'logo' | 'full') {
     reader(file).then(res => {
       handleDecals(type, res as string)
       setActiveEditorTab('')
@@ -48,11 +58,11 @@ export default function Customizer() {
     state[decalType.stateProperty as 'logoDecal' | 'fullDecal'] = result
 
     if (!activeFilterTab[decalType.filterTab as keyof typeof activeFilterTab]) {
-      handleActiveFilterTab(decalType.filterTab)
+      handleActiveFilterTab(decalType.filterTab as keyof typeof activeFilterTab)
     }
   }
 
-  function handleActiveFilterTab(tabName: string) {
+  function handleActiveFilterTab(tabName: keyof typeof activeFilterTab) {
     switch (tabName) {
       case 'logoShirt':
         state.isLogoTexture = !activeFilterTab[tabName]
@@ -64,6 +74,13 @@ export default function Customizer() {
         state.isLogoTexture = true
         state.isFullTexture = false
     }
+
+    setActiveFilterTab(prev => {
+      return {
+        ...prev,
+        [tabName]: !prev[tabName]
+      }
+    })
   }
 
   return (
@@ -88,7 +105,13 @@ export default function Customizer() {
 
           <motion.div className='filtertabs-container' {...slideAnimation('up')}>
             {FilterTabs.map((tab, index) => (
-              <Tab key={index} tab={tab} isFilterTab isActiveTab='' handleClick={() => {}} />
+              <Tab
+                key={index}
+                tab={tab}
+                isFilterTab
+                isActiveTab={activeFilterTab[tab.name as keyof typeof activeFilterTab]}
+                handleClick={() => handleActiveFilterTab(tab.name as keyof typeof activeFilterTab)}
+              />
             ))}
           </motion.div>
         </>

@@ -5,7 +5,7 @@ interface ITabProps {
   tab: { name: string; icon: string }
   handleClick: () => void
   isFilterTab?: boolean
-  isActiveTab?: string
+  isActiveTab?: boolean
 }
 export default function Tab({ tab, handleClick, isFilterTab, isActiveTab }: ITabProps) {
   const snap = useSnapshot(state)

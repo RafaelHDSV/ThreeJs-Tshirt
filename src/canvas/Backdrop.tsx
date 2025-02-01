@@ -20,10 +20,10 @@ interface AccumulativeContext {
 
 export default function Backdrop() {
   const shadows = useRef<AccumulativeContext | null>(null)
-  useFrame((state: THREE.WebGLRenderer, delta) => {
+  useFrame((state, delta) => {
     const color = shadows.current?.getMesh().material.color as THREE.Color
     console.log(state)
-    const targetColor = state.color
+    const targetColor = state.scene.background as THREE.Color
     if (color) {
       easing.dampC(color, targetColor, 0.25, delta)
     }

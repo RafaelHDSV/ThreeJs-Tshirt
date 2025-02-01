@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# ThreeJs-Tshirt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![ThreeJs language](https://img.shields.io/badge/ThreeJs-black?style=for-the-badge&logo=three.js&logoColor=white)
+![React language](https://img.shields.io/badge/React-005CFE?style=for-the-badge&logo=react)
+![Typescript language](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS language](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![HTML language](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 
-Currently, two official plugins are available:
+![GitHub language count](https://img.shields.io/github/languages/count/RafaelHDSV/ThreeJs-Tshirt?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/RafaelHDSV/ThreeJs-Tshirt?style=for-the-badge)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+    <img src="./public/main.png" alt="main.png">
+</p>
 
-## Expanding the ESLint configuration
+<p align="center">
+    <a href="#about">About |</a> 
+    <a href="#started">Getting Started</a> 
+    <a href="#routes">| App Routes</a>
+    <a href="#images">| Images</a> 
+</p>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<h2 id="about">📌 About</h2>
 
-- Configure the top-level `parserOptions` property like this:
+ Create custom shirts with an interactive system that allows you to choose dynamic colors and upload logos or full prints. See real-time previews and ensure a unique and exclusive design.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+<h2 id="started">🚀 Getting started</h2>
+
+<h3>Cloning</h3>
+
+```bash
+git clone https://github.com/RafaelHDSV/ThreeJs-Tshirt.git
+yarn install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<h3>Starting</h3>
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd ThreeJs-Tshirt
+yarn start
 ```
+
+<h2 id="images">📷 Images</h2>
+
+<h3>Home page</h3>
+<img src="./public/main.png" alt="main.png" />
+
+<h3>Customizer page</h3>
+<img src="./public/customizer.png" alt="customizer.png" />

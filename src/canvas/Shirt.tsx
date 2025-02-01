@@ -3,7 +3,7 @@ import { useSnapshot } from 'valtio'
 import { useFrame } from '@react-three/fiber'
 import { Decal, useGLTF, useTexture } from '@react-three/drei'
 import state from '../store'
-import { Mesh } from 'three'
+import { Mesh, MeshStandardMaterial } from 'three'
 
 export default function Shirt() {
   const snap = useSnapshot(state)
@@ -15,7 +15,7 @@ export default function Shirt() {
   if (logoTexture) logoTexture.anisotropy = 16
   if (fullTexture) fullTexture.anisotropy = 16
 
-  useFrame((state, delta) => easing.dampC(materials.lambert1.color, snap.color, 0.25, delta))
+  useFrame((_, delta) => easing.dampC((materials.lambert1 as MeshStandardMaterial).color, snap.color, 0.25, delta))
 
   const stateString = JSON.stringify(snap)
 

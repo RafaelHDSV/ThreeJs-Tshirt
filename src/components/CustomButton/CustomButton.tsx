@@ -8,7 +8,7 @@ interface ICustomButtonProps {
   title: string
   handleClick?: () => void
   customStyles: string
-  timeout: number
+  timeout?: number
 }
 
 export default function CustomButton({ type, title, handleClick, customStyles, timeout }: ICustomButtonProps) {

@@ -1,6 +1,5 @@
 import swatch from '../assets/swatch.png'
 import fileIcon from '../assets/file.png'
-import ai from '../assets/ai.png'
 import logoShirt from '../assets/logo-tshirt.png'
 import stylishShirt from '../assets/stylish-tshirt.png'
 
@@ -12,10 +11,6 @@ export const EditorTabs = [
   {
     name: 'filepicker',
     icon: fileIcon
-  },
-  {
-    name: 'aipicker',
-    icon: ai
   }
 ]
 

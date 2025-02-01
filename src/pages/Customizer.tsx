@@ -8,16 +8,13 @@ import CustomButton from '../components/CustomButton/CustomButton'
 import { useState } from 'react'
 import ColorPicker from '../components/ColorPicker/ColorPicker'
 import FilePicker from '../components/FilePicker/FilePicker'
-import AIPicker from '../components/AIPicker/AIPicker'
 import { reader } from '../config/helpers'
 
 export default function Customizer() {
   const snap = useSnapshot(state)
   const [file, setFile] = useState<File | undefined>()
-  const [prompt, setPrompt] = useState('')
   const [activeEditorTab, setActiveEditorTab] = useState('')
   const [activeFilterTab, setActiveFilterTab] = useState({ logoShirt: true, stylishShirt: false })
-  const [loading, setLoading] = useState(false)
 
   function generateTabContent() {
     switch (activeEditorTab) {
@@ -25,38 +22,8 @@ export default function Customizer() {
         return <ColorPicker />
       case 'filepicker':
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />
-      case 'aipicker':
-        return <AIPicker prompt={prompt} setPrompt={setPrompt} loading={loading} handleSubmit={handleSubmit} />
       default:
         return null
-    }
-  }
-
-  async function handleSubmit(type: 'logo' | 'full') {
-    if (!prompt) return alert('Please enter a prompt')
-    setLoading(true)
-
-    try {
-      const response = await fetch('http://localhost:8080/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ prompt })
-      })
-
-      const data = await response.json()
-      if (!data.photo) {
-        console.error('Image generation failed:', data)
-        throw new Error('Image generation failed')
-      }
-
-      handleDecals(type, `data:image/png;base64,${data.photo}`)
-    } catch (err) {
-      console.error('Error:', err)
-      alert('This is a paid feature. Please contact support for more information.')
-    } finally {
-      setLoading(false)
     }
   }
 

@@ -10,15 +10,22 @@ export default function CameraRig({ children }: { children: ReactNode }) {
   const snap = useSnapshot(state)
 
   useFrame((state, delta) => {
-    const isBreakpoint = window.innerWidth <= 1260
-    const isMobile = window.innerWidth <= 600
+    const isTablet = window.innerWidth <= 768
+    const isLargeMobile = window.innerWidth <= 426
+    const isMediumMobile = window.innerWidth <= 376
+    const isSmallMobile = window.innerWidth <= 321
 
     let targetPosition: [x: number, y: number, z: number] = [-0.4, 0, 2]
     if (snap.intro) {
-      if (isBreakpoint) targetPosition = [0, 0, 2]
-      if (isMobile) targetPosition = [0, 0.2, 2.5]
+      if (isTablet) targetPosition = [-0.25, 0, 2]
+      if (isLargeMobile) targetPosition = [0, 0.4, 3.5]
+      if (isMediumMobile) targetPosition = [0, 0.4, 3.5]
+      if (isSmallMobile) targetPosition = [0, 0.5, 4]
     } else {
-      if (isMobile) targetPosition = [0, 0, 2.5]
+      // if (isTablet) targetPosition = [-0.25, 0, 5]
+      // if (isLargeMobile) targetPosition = [0, 0, 5]
+      // if (isMediumMobile) targetPosition = [0, 0.4, 3.5]
+      if (isSmallMobile) targetPosition = [0, 0.5, 4]
       else targetPosition = [0, 0, 2]
     }
 

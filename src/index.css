@@ -13,7 +13,7 @@ html {
 }
 
 .app {
-  @apply relative w-full h-screen overflow-hidden;
+  @apply relative w-full h-screen overflow-hidden max-[426px]:h-[65rem] max-[376px]:h-[60rem] max-[321px]:h-[60rem];
 }
 
 .home {
@@ -38,14 +38,6 @@ html {
 
 .filtertabs-container {
   @apply absolute z-10 bottom-5 right-0 left-0 w-full flex justify-center items-center flex-wrap gap-4;
-}
-
-.aipicker-container {
-  @apply absolute left-full ml-3 bg-white/25 shadow-[0_2px_30px_0_rgba(31,38,135,0.07)] backdrop-blur-sm border border-white/18 p-3 w-[195px] h-[220px] rounded-md flex flex-col gap-4;
-}
-
-.aipicker-textarea {
-  @apply w-full bg-transparent text-sm border border-gray-300 p-2 outline-none flex-1;
 }
 
 .filepicker-container {

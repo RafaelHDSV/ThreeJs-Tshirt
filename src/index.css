@@ -37,7 +37,7 @@ html {
 }
 
 .filtertabs-container {
-  @apply absolute z-10 bottom-5 right-0 left-0 w-full flex justify-center items-center flex-wrap gap-4;
+  @apply absolute z-10 bottom-14 right-0 left-0 w-full flex justify-center items-center flex-wrap gap-4;
 }
 
 .filepicker-container {
@@ -72,9 +72,9 @@ input[type='file'] {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 3.25rem;
+  bottom: 0.35rem;
   z-index: 40;
-  padding: 0.35rem 1rem;
+  padding: 0.25rem 1rem;
   text-align: center;
   pointer-events: none;
   color: rgba(15, 23, 42, 0.75);
